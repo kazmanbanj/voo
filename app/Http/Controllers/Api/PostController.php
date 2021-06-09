@@ -11,7 +11,19 @@ class PostController extends Controller
 {
     public function index()
     {
-        // return PostResource::collection(Post::all());
-        return PostResource::collection(Post::paginate(50));
+        $sortField = request('sort_field', 'created_at');
+        if (!in_array($sortField, ['title', 'post_text', 'created_at'])) {
+            $sortField = 'created_at';
+        }
+
+        $sortDirection = request('sort_direction', 'desc');
+        if (!in_array($sortDirection, ['asc', 'desc'])) {
+            $sortDirection = 'created_at';
+        }
+
+        $posts = Post::when(request('category_id', '') != '', function ($query) {
+            $query->where('category_id', request('category_id'));
+        })->orderBy($sortField, $sortDirection)->paginate(10);
+        return PostResource::collection($posts);
     }
 }

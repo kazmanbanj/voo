@@ -8,10 +8,19 @@
 
         <!-- CSS only -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+        <style lang="">
+            .selectWidth {
+                max-width: 200px;
+            }
+
+            .router-link-active {
+                font-weight: bold;
+            }
+        </style>
     </head>
     <body>
         <div id="app">
-            <post-component></post-component>
+            <app></app>
         </div>
 
     <script src="{{ mix('js/app.js')}}"></script>
