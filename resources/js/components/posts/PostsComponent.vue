@@ -8,17 +8,22 @@
             <thead>
                 <tr>
                     <th>
-                        <a href="#" @click.prevent="change_sort('title')">Title</a>
+                        <a href="javascript:" @click.prevent="change_sort('title')">Title</a>
                         <span v-if="this.sort_field == 'title' && this.sort_direction == 'asc'">&uarr;</span>
                         <span v-if="this.sort_field == 'title' && this.sort_direction == 'desc'">&darr;</span>
                     </th>
                     <th>
-                        <a href="#" @click.prevent="change_sort('post_text')">Post Text</a>
+                        <a href="javascript:" @click.prevent="change_sort('post_text')">Post Text</a>
                         <span v-if="this.sort_field == 'post_text' && this.sort_direction == 'asc'">&uarr;</span>
                         <span v-if="this.sort_field == 'post_text' && this.sort_direction == 'desc'">&darr;</span>
                     </th>
+                    <th>
+                        <a href="javascript:" @click.prevent="change_sort('category_id')">Category</a>
+                        <span v-if="this.sort_field == 'category_id' && this.sort_direction == 'asc'">&uarr;</span>
+                        <span v-if="this.sort_field == 'category_id' && this.sort_direction == 'desc'">&darr;</span>
+                    </th>
                     <th style="width: 130px;">
-                        <a href="#" @click.prevent="change_sort('created_at')" style="max-width:250px">Created Date</a>
+                        <a href="javascript:" @click.prevent="change_sort('created_at')" style="max-width:250px">Created Date</a>
                         <span v-if="this.sort_field == 'created_at' && this.sort_direction == 'asc'">&uarr;</span>
                         <span v-if="this.sort_field == 'created_at' && this.sort_direction == 'desc'">&darr;</span>
                     </th>
@@ -26,11 +31,14 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="post in posts.data" :key="post.id">
+                <tr v-for="(post, index) in posts.data" :key="index.id">
                     <td>{{ post.title }}</td>
                     <td>{{ post.post_text.substring(0,100) }}</td>
+                    <td>{{ post.category_id }}</td>
                     <td>{{ post.created_at }}</td>
-                    <td></td>
+                    <td>
+                        <router-link :to="{ name: 'editPost', params: { id: post.id } }">Edit</router-link>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -48,7 +56,7 @@ export default {
             categories: {},
             category_id: '',
             sort_field: 'created_at',
-            sort_direction: 'desc',
+            sort_direction: 'asc',
         }
     },
     mounted() {
