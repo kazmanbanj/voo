@@ -56,7 +56,7 @@ export default {
             categories: {},
             category_id: '',
             sort_field: 'created_at',
-            sort_direction: 'asc',
+            sort_direction: 'desc',
         }
     },
     mounted() {

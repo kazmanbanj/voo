@@ -13,7 +13,7 @@
         "axios": "^0.21",
         "bootstrap": "^4.6.0",
         "jquery": "^3.6",
-        "laravel-mix": "^6.0.6",
+        "laravel-mix": "^6.0.19",
         "lodash": "^4.17.19",
         "popper.js": "^1.16.1",
         "postcss": "^8.1.14",
@@ -23,11 +23,14 @@
         "vue": "^2.6.12",
         "vue-loader": "^15.9.5",
         "vue-template-compiler": "^2.6.12",
-        "webpack-cli": "^4.7.0"
+        "webpack": "^5.38.1",
+        "webpack-cli": "^4.7.2"
     },
     "dependencies": {
         "laravel-vue-pagination": "^2.3.1",
+        "reify": "^0.20.12",
         "sweetalert": "^2.1.2",
+        "sweetalert2": "^11.0.16",
         "vue-router": "^3.5.1",
         "vue-sweetalert2": "^4.3.1"
     }

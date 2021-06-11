@@ -12,7 +12,7 @@
                 <label for="">Post text</label>
                 <textarea rows="10" v-model="fields.post_text" class="form-control"></textarea>
             </div>
-            <p class="alert alert-danger" v-if="errors && errors.title">{{ errors.title[0] }}</p>
+            <p class="alert alert-danger" v-if="errors && errors.post_text">{{ errors.post_text[0] }}</p>
             <br>
             <div class="form-group">
                 <label>Category</label>
@@ -58,11 +58,11 @@ export default {
             this.form_submitting = true;
             axios.put('/api/posts/' + this.$route.params.id, this.fields)
             .then(response => {
-                this.$swal('Post Updated Successfully');
+                swal("Post Updated Successfully");
                 this.$router.push('/');
                 this.form_submitting = false;
             }).catch(error => {
-                this.$swal({icon: 'error', title: 'Error happened'});
+                swal("Post Update Failed", "Please, fill correctly", "error");
                 if (error.response.status === 422) {
                     this.errors = error.response.data.errors;
                 }

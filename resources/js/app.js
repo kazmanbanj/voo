@@ -5,8 +5,14 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
-import VueSweetalert2 from 'vue-sweetalert2'
-Vue.use(VueSweetalert2)
+import swal from 'sweetalert'
+Vue.use({
+    // this is the required "install" method for Vue plugins
+    install (Vue) {
+      Vue.swal = swal
+      Vue.prototype.$swal = swal
+    }
+  })
 
 import routes from './routes'
 
