@@ -15,17 +15,13 @@
                         <li class="nav-item">
                             <router-link exact :to="{ name: 'categories' }" class="nav-link">Categories</router-link>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Pricing</a>
-                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Posts Menu
+                            Menu
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <router-link exact :to="{ name: 'createPost' }" class="nav-link">Create New Post</router-link>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
+                                <router-link exact :to="{ name: 'categories' }" class="nav-link">Categories</router-link>
                             </div>
                         </li>
                         </ul>
