@@ -37,7 +37,9 @@
                     <td>{{ post.category_id }}</td>
                     <td>{{ post.created_at }}</td>
                     <td>
-                        <router-link :to="{ name: 'editPost', params: { id: post.id } }">Edit</router-link>
+                        <div class="d-flex">
+                        <router-link class="btn btn-info btn-sm" :to="{ name: 'editPost', params: { id: post.id } }">Edit</router-link>
+                        <button @click="delete_post(post.id)" class="btn btn-danger btn-sm">Delete</button></div>
                     </td>
                 </tr>
             </tbody>
@@ -88,7 +90,28 @@ export default {
 				.then(response => {
 					this.posts = response.data;
 				});
-		}
+		},
+        delete_post(post_id) {
+            swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this post!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+            }).then((willDelete) => {
+                if (willDelete) {
+                    axios.delete('/api/posts/' + post_id)
+                    .then(response => {
+                    swal("Your post has been deleted!", {
+                    icon: "success"
+                    });
+                    this.getResults();
+                    })
+                }  else {
+                swal("Your post is safe!");
+            }
+            });
+        }
 	}
 };
 </script>

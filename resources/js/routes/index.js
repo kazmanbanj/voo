@@ -1,4 +1,4 @@
-import Posts from '../components/posts/PostsComponent.vue'
+import Posts from '../components/posts/Index.vue'
 import CreatePost from '../components/posts/CreatePostComponent.vue'
 import EditPost from '../components/posts/EditPostComponent.vue'
 import Categories from '../components/posts/ListCategoriesComponent.vue'
